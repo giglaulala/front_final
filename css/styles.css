@@ -189,6 +189,10 @@ footer {
     width: 100%;
     overflow: hidden;
 }
+
+.hidden {
+    display: none;
+}
 .carousel-arrow {
     background: #fff;
     border: 2px solid #888;
