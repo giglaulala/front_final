@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         const ranks = ['2', '1', '3'];
         const classes = ['left', 'middle', 'right'];
+        const prizes = ['1000$', '5000$', '2000$'];
         for (let i = 0; i < 3; i++) {
             const podiumStep = document.createElement('div');
             podiumStep.className = `podium-step ${classes[i]}`;
@@ -89,6 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
             podiumRank.className = 'podium-rank';
             podiumRank.textContent = ranks[i];
             podiumBase.appendChild(podiumRank);
+            const podiumCash = document.createElement('span');
+            podiumCash.className = 'podium-cash';
+            podiumCash.textContent = prizes[i];
+            podiumBase.appendChild(podiumCash);
             podiumStep.appendChild(podiumBase);
             topLikedDiv.appendChild(podiumStep);
         }
