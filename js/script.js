@@ -195,4 +195,66 @@ document.addEventListener('DOMContentLoaded', function() {
             cookieBar.style.display = 'none';
         });
     }
+
+    const socialFeed = document.getElementById('social-feed');
+    if (socialFeed && socialFeed.childElementCount === 0) {
+        const fakeUsers = [
+            { name: 'Alice', avatar: 'https://i.pravatar.cc/50?img=1' },
+            { name: 'Bob', avatar: 'https://i.pravatar.cc/50?img=2' },
+            { name: 'Charlie', avatar: 'https://i.pravatar.cc/50?img=3' },
+            { name: 'Diana', avatar: 'https://i.pravatar.cc/50?img=4' },
+            { name: 'Eve', avatar: 'https://i.pravatar.cc/50?img=5' }
+        ];
+        for (let i = 0; i < 8; i++) {
+            const user = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
+            const id = Math.floor(Math.random() * 1000) + 1;
+            const imageUrl = `https://picsum.photos/id/${id}/400/300`;
+            const comments = Math.floor(Math.random() * 30) + 1;
+            const shares = Math.floor(Math.random() * 20) + 1;
+            const post = document.createElement('div');
+            post.className = 'social-post';
+            post.innerHTML = `
+                <div class="post-header">
+                    <img class="avatar" src="${user.avatar}" alt="${user.name}">
+                    <span class="username">${user.name}</span>
+                </div>
+                <img class="post-image" src="${imageUrl}" alt="Post image">
+                <div class="post-caption">${generateFakeCaption()}</div>
+                <div class="post-actions">
+                    <button class="like-btn">❤️ <span class="like-count">${Math.floor(Math.random()*100)+1}</span></button>
+                    <button class="comment-btn">💬 <span class="comment-count">${comments}</span></button>
+                    <button class="share-btn">🔗 <span class="share-count">${shares}</span></button>
+                </div>
+            `;
+            socialFeed.appendChild(post);
+        }
+        socialFeed.querySelectorAll('.like-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const countSpan = this.querySelector('.like-count');
+                let count = parseInt(countSpan.textContent, 10);
+                count++;
+                countSpan.textContent = count;
+            });
+        });
+    }
+    function generateFakeCaption() {
+        const captions = [
+            'Enjoying the view!',
+            'What a day!',
+            'Captured this moment.',
+            'Nature at its best.',
+            'Feeling inspired.',
+            'Love this place!',
+            'Adventure time!',
+            'Making memories.'
+        ];
+        return captions[Math.floor(Math.random() * captions.length)];
+    }
+
+    const addPostBtn = document.getElementById('add-post-btn');
+    if (addPostBtn) {
+        addPostBtn.addEventListener('click', function() {
+            window.location.href = 'upload.html';
+        });
+    }
 });

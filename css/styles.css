@@ -1,18 +1,17 @@
 html, body {
     overflow-x: hidden;
     max-width: 100vw;
+    font-family: 'Orbitron', Arial, Helvetica, sans-serif;
+    height: 100%;
 }
-main {
-    overflow-x: hidden;
-    max-width: 100vw;
-}
-
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
     background: #fff;
     color: #222;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 header {
     background: #111;
@@ -177,6 +176,10 @@ footer {
     padding: 1.5rem 0 1rem 0;
     margin-top: 2rem;
     font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 .carousel-container {
@@ -345,6 +348,7 @@ section#features {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: inherit !important;
 }
 .top-liked-inner {
     width: 100vw;
@@ -354,11 +358,11 @@ section#features {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    font-family: inherit !important;
 }
 .top-liked-card h3 {
     color: #fff;
     font-size: 2.5rem;
-    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
     font-weight: 700;
     text-transform: none;
     letter-spacing: 1px;
@@ -375,12 +379,14 @@ section#features {
     overflow: visible !important;
     min-height: 0 !important;
     height: auto !important;
+    font-family: inherit !important;
 }
 .top-liked-images .podium-step {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    font-family: inherit !important;
 }
 .top-liked-images img {
     width: 200px;
@@ -423,7 +429,7 @@ section#features {
     text-shadow: 0 2px 8px #23232b;
     z-index: 2;
     margin-bottom: 2px;
-    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    font-family: inherit !important;
 }
 .podium-cash {
     margin-top: 0;
@@ -433,7 +439,7 @@ section#features {
     font-weight: bold;
     text-align: center;
     text-shadow: 0 2px 8px #23232b;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: inherit !important;
 }
 @media (max-width: 900px) {
     .top-liked-images {
@@ -820,4 +826,343 @@ section#register {
     transform: scale(1.08) rotate(-2deg);
     box-shadow: 0 8px 32px 0 #ff4081, 0 4px 24px rgba(255,64,129,0.18);
     z-index: 2;
+}
+
+/* Social Feed Styles */
+#social-feed {
+  max-width: 700px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: relative;
+}
+#social-feed::before, #social-feed::after,
+#social-feed::before, #social-feed::after,
+#social-feed .side-deco1, #social-feed .side-deco2, #social-feed .side-deco3,
+#social-feed .side-deco4, #social-feed .side-deco5, #social-feed .side-deco6 {}
+
+.side-deco1, .side-deco2, .side-deco3, .side-deco4, .side-deco5, .side-deco6 {
+  content: '';
+  position: fixed;
+  width: 32px;
+  height: 70vh;
+  z-index: 0;
+  border-radius: 24px;
+  opacity: 0.13;
+  pointer-events: none;
+}
+.side-deco1 {
+  left: 32px;
+  top: 100px;
+  background: linear-gradient(180deg, #ff4081 0%, #ffd6e6 100%);
+}
+.side-deco2 {
+  left: 32px;
+  top: 320px;
+  background: linear-gradient(180deg, #ff4081 0%, #ffd6e6 100%);
+  opacity: 0.18;
+}
+.side-deco3 {
+  left: 32px;
+  top: 540px;
+  background: linear-gradient(180deg, #ff4081 0%, #ffd6e6 100%);
+  opacity: 0.23;
+}
+.side-deco4 {
+  right: 32px;
+  top: 100px;
+  background: linear-gradient(0deg, #2196f3 0%, #b3e5fc 100%);
+}
+.side-deco5 {
+  right: 32px;
+  top: 320px;
+  background: linear-gradient(0deg, #2196f3 0%, #b3e5fc 100%);
+  opacity: 0.18;
+}
+.side-deco6 {
+  right: 32px;
+  top: 540px;
+  background: linear-gradient(0deg, #2196f3 0%, #b3e5fc 100%);
+  opacity: 0.23;
+}
+.social-post {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem 2.5rem 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 520px;
+}
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #eee;
+}
+.username {
+  font-weight: 600;
+  color: #222;
+}
+.post-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+.post-caption {
+  margin: 0.5rem 0 0.75rem 0;
+  color: #444;
+  font-size: 1rem;
+}
+.post-actions {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.2rem;
+}
+.comment-btn, .share-btn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.comment-btn:hover, .share-btn:hover {
+  background: #f0f0f0;
+  color: #222;
+}
+.comment-count, .share-count {
+  font-weight: 600;
+  color: #222;
+}
+.like-btn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: #ff4081;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.like-btn:hover {
+  background: #ffe4ef;
+}
+.like-count {
+  font-weight: 600;
+  color: #222;
+}
+
+/* Social Feed Title */
+#social-media-page h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+  color: #222;
+  letter-spacing: 1px;
+  position: relative;
+}
+#social-media-page h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff4081 60%, #ffd6e6 100%);
+  border-radius: 2px;
+  margin: 0.7rem auto 0 auto;
+}
+
+/* Decorative bars: add these as <div class="side-deco1"></div> ... <div class="side-deco6"></div> inside #social-feed in social.html */
+
+button, .like-btn, .comment-btn, .share-btn {
+  font-family: inherit !important;
+}
+
+.floating-add-post {
+  position: fixed;
+  right: 40px;
+  top: 85vh;
+  z-index: 10;
+  background: linear-gradient(90deg, #ff4081 60%, #ffd6e6 100%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  padding: 0.9rem 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.floating-add-post:hover {
+  background: linear-gradient(90deg, #ff4081 80%, #ffb3d6 100%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  transform: translateY(-4px) scale(1.04);
+}
+.floating-add-post .camera-icon, .floating-add-post .plus-icon {
+  font-size: 1.4em;
+  line-height: 1;
+}
+
+.upload-card {
+  max-width: 400px;
+  margin: 4rem auto 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: inherit;
+}
+.upload-card h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+#upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+#upload-form label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.2rem;
+}
+#upload-form input[type="file"] {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  font-family: inherit;
+  display: none;
+}
+#upload-form input[type="text"] {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fafafa;
+  transition: border 0.2s;
+}
+#upload-form input[type="text"]:focus {
+  border: 1.5px solid #ff4081;
+  outline: none;
+}
+#upload-form button[type="submit"] {
+  margin-top: 0.7rem;
+  background: linear-gradient(90deg, #ff4081 60%, #ffd6e6 100%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 0;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+#upload-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #ff4081 80%, #ffb3d6 100%);
+}
+.back-btn {
+  margin: 1.2rem auto 0 auto;
+  background: none;
+  border: none;
+  color: #ff4081;
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+  display: block;
+}
+.back-btn:hover {
+  color: #d81b60;
+}
+
+/* Custom file input styles */
+.file-label {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff4081 60%, #ffd6e6 100%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s;
+}
+.file-label:hover {
+  background: linear-gradient(90deg, #ff4081 80%, #ffb3d6 100%);
+}
+#file-chosen {
+  margin-left: 0.7rem;
+  color: #444;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+/* Success message */
+#upload-success {
+  margin-top: 1.2rem;
+  color: #219a4a;
+  background: #e6ffe6;
+  border: 1.5px solid #b2f2c9;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: none;
+}
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.page-container main {
+  flex: 1 0 auto;
+}
+.page-container footer {
+  flex-shrink: 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }

@@ -30,7 +30,7 @@
         <section id="hero">
             <h1>Welcome to PhotoSnap</h1>
             <p>Capturing moments, one snap at a time.</p>
-            <button>Explore Gallery</button>
+            <button id="explore-gallery-btn" class="explore-gallery-btn" onclick="window.location.href='social.html'">Explore Gallery</button>
             <div id="product-carousel" class="carousel-container"></div>
         </section>
 
@@ -91,6 +91,11 @@
                 <textarea placeholder="Your Message" required></textarea>
                 <button type="submit">Send</button>
             </form>
+        </section>
+        <section id="social-media-page" class="hidden">
+            <h2>Social Feed</h2>
+            <div id="social-feed"></div>
+            <button id="close-social-media">Close</button>
         </section>
     </main>
     <footer>

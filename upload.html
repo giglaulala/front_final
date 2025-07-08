@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:700&display=swap" rel="stylesheet">
+    <title>Upload Image - PhotoSnap</title>
+</head>
+<body class="page-container">
+    <header>
+        <nav>
+            <div class="logo" style="cursor:pointer;" onclick="window.location.href='index.html'">PhotoSnap</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="social.html">Social</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="upload-section">
+            <div class="upload-card">
+                <h2>Upload Image</h2>
+                <form id="upload-form" autocomplete="off">
+                    <label for="upload-image" class="file-label">Choose File</label>
+                    <input type="file" id="upload-image" name="image" accept="image/*" required>
+                    <span id="file-chosen">No file chosen</span>
+                    <label for="upload-caption">Caption</label>
+                    <input type="text" id="upload-caption" name="caption" maxlength="100" placeholder="Write a caption..." required>
+                    <button type="submit">Upload</button>
+                </form>
+                <button onclick="window.location.href='social.html'" class="back-btn">← Back to Feed</button>
+                <div id="upload-success">Image uploaded successfully!</div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 PhotoSnap. All rights reserved.</p>
+    </footer>
+    <script>
+
+    const uploadInput = document.getElementById('upload-image');
+    const fileChosen = document.getElementById('file-chosen');
+    const uploadForm = document.getElementById('upload-form');
+    const uploadSuccess = document.getElementById('upload-success');
+    document.querySelector('.file-label').addEventListener('click', function() {
+        uploadInput.click();
+    });
+    uploadInput.addEventListener('change', function() {
+        fileChosen.textContent = this.files[0] ? this.files[0].name : 'No file chosen';
+    });
+    uploadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        uploadSuccess.style.display = 'block';
+        uploadForm.reset();
+        fileChosen.textContent = 'No file chosen';
+        setTimeout(() => { uploadSuccess.style.display = 'none'; }, 2500);
+    });
+    </script>
+</body>
+</html> 
