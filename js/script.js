@@ -187,11 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const cookieBar = document.getElementById('cookie-notification');
     const acceptCookies = document.getElementById('accept-cookies');
     if (cookieBar && acceptCookies) {
-        if (!localStorage.getItem('cookiesAccepted')) {
-            cookieBar.style.display = 'flex';
-        }
+        cookieBar.style.display = 'flex';
         acceptCookies.addEventListener('click', function() {
-            localStorage.setItem('cookiesAccepted', 'yes');
             cookieBar.style.display = 'none';
         });
     }
